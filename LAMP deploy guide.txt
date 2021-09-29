@@ -1,0 +1,62 @@
+How to deploy a website using LAMP
+
+Applications to install:
+Apache
+MySQL
+PHP
+
+Step 1: install Apache
+Use commands
+
+sudo apt update //Make sure the OS is up to date
+
+sudo apt install apache2 //install apache
+
+Step 2: install MySQL
+use commands
+
+sudo apt install mysql-server 
+
+sudo mysql_secure_installation
+
+Step 3: install PHP
+Use commands
+
+sudo apt install php php-mysql libapache2-mod-php
+
+Step 4: open the dir.conf file with the editor of your choice
+Use commands
+
+sudo vi /etc/apache2/mods-enabled/dir.conf
+
+Step 5: Move the index file to the beginning of the list of file types
+Change the file to look like this:
+
+<IfModule mod_dir.c>
+        DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+
+Step 6: restart apache
+Use the command
+
+sudo systemctl restart apache2
+
+Step 7: test if php has been installed and configured correctly
+Create and open a file called info.php
+
+Use command
+
+sudo vi /var/www/html/info.php
+
+Enter the following code in your file
+
+<?php
+phpinfo();
+?>
+
+On your browser, navigate to the following link, replacing the x's with your server's IP address pr domain name.
+xxx.xxx.xxx.xxx/info.php
+
+You should see the php settings page display.
+
+Step 8: add your php code in the same folder as your index.php file, replacing the index,php with your own index.php file and open the index.php file and your website will display.
